@@ -1,21 +1,21 @@
 import type { Project, ProjectCategory } from "@/types";
-import heroConstruction from "@/images/hero/hero-construction.avif";
-import towerCorporate from "@/images/projects/tower-corporate.avif";
-import foundationWorks from "@/images/projects/foundation-works.avif";
-import villaExterior from "@/images/projects/villa-exterior.avif";
-import villaInterior from "@/images/projects/villa-interior.avif";
-import villaGarden from "@/images/projects/villa-garden.avif";
-import officeExposed from "@/images/projects/office-exposed.avif";
-import officeOpenPlan from "@/images/projects/office-open-plan.avif";
-import officeRooftop from "@/images/projects/office-rooftop.avif";
-import engineersBlueprints from "@/images/projects/engineers-blueprints.avif";
-import campusCourtyard from "@/images/projects/campus-courtyard.avif";
-import retailFacade from "@/images/projects/retail-facade.avif";
-import restaurantTerrace from "@/images/projects/restaurant-terrace.avif";
-import waterfrontPromenade from "@/images/projects/waterfront-promenade.avif";
-import resortExterior from "@/images/projects/resort-exterior.avif";
-import resortPool from "@/images/projects/resort-pool.avif";
-import resortBeachClub from "@/images/projects/resort-beach-club.avif";
+import heroConstruction from "@/images/hero/hero-construction.webp";
+import towerCorporate from "@/images/projects/tower-corporate.webp";
+import foundationWorks from "@/images/projects/foundation-works.webp";
+import villaExterior from "@/images/projects/villa-exterior.webp";
+import villaInterior from "@/images/projects/villa-interior.webp";
+import villaGarden from "@/images/projects/villa-garden.webp";
+import officeExposed from "@/images/projects/office-exposed.webp";
+import officeOpenPlan from "@/images/projects/office-open-plan.webp";
+import officeRooftop from "@/images/projects/office-rooftop.webp";
+import engineersBlueprints from "@/images/projects/engineers-blueprints.webp";
+import campusCourtyard from "@/images/projects/campus-courtyard.webp";
+import retailFacade from "@/images/projects/retail-facade.webp";
+import restaurantTerrace from "@/images/projects/restaurant-terrace.webp";
+import waterfrontPromenade from "@/images/projects/waterfront-promenade.webp";
+import resortExterior from "@/images/projects/resort-exterior.webp";
+import resortPool from "@/images/projects/resort-pool.webp";
+import resortBeachClub from "@/images/projects/resort-beach-club.webp";
 
 /** Single source of truth for project case studies. */
 export const PROJECTS: Project[] = [

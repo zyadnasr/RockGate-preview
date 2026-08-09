@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Section, Container } from "@/components/ui/container";
 import { ImageWithSkeleton } from "@/components/ui/image-with-skeleton";
 import { MagneticButton } from "@/components/ui/magnetic-button";
-import aboutEngineers from "@/images/about/about-engineers.avif";
+import aboutEngineers from "@/images/about/about-engineers.webp";
 
 const IMG_MAIN = aboutEngineers;
 

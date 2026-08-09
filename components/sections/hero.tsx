@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import { HydrateOnIdle } from "@/components/ui/hydrate-on-idle";
-import heroConstruction from "@/images/hero/hero-construction.avif";
+import heroConstruction from "@/images/hero/hero-construction.webp";
 import emblem from "@/images/RockGate-logos/rockgate-emblem.svg";
 
 const ENTRANCE_EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
