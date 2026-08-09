@@ -3,8 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   // Static export — the preview is a pure static site (no server runtime).
   output: "export",
-  // Deployed to GitHub Pages as a project site under /RockGate/.
-  basePath: "/RockGate",
+  // Deployed to GitHub Pages as a project site from the separate
+  // RockGate-preview repository, so the site lives under /RockGate-preview/.
+  basePath: "/RockGate-preview",
   trailingSlash: true,
   images: {
     // No image optimizer on GitHub Pages; serve imported assets as-is.

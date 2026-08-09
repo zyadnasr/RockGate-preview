@@ -1,8 +1,9 @@
 // Preview copy: the `import "server-only"` guard from the original is removed
 // so this runs during static export (build-time SSR). Original file untouched.
 
-/** Canonical origin. Override in production with NEXT_PUBLIC_SITE_URL. */
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://rockgate.example.com";
+/** Canonical origin. Override with NEXT_PUBLIC_SITE_URL if the host changes. */
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://zyadnasr.github.io/RockGate-preview";
 
 export const SITE_TITLE = "Rock Gate — Construction, Engineering & Contracting in Egypt";
 export const SITE_DESCRIPTION =
