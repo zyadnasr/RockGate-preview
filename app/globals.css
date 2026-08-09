@@ -1,0 +1,294 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme */
+    --background: 0 0% 100%; /* #fff */
+    --foreground: 0 0% 7%; /* #111 */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 0 0% 7%; /* #111 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 97%; /* near-white surface */
+    --secondary-foreground: 0 0% 7%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 42%;
+    --accent: 38 100% 30%; /* accessible deep gold #996100 on light surfaces */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 88%;
+    --ring: 38 100% 30%;
+    --radius: 0.75rem;
+    --surface: 0 0% 97.3%; /* #F8F8F8 — section alternate surface */
+  }
+
+  .dark {
+    /* Dark theme — deep charcoal base, gold accent preserved */
+    --background: 0 0% 6%; /* #0f0f0f */
+    --foreground: 0 0% 96%;
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 96%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 45 100% 48%; /* gold as primary in dark */
+    --primary-foreground: 0 0% 7%;
+    --secondary: 0 0% 13%;
+    --secondary-foreground: 0 0% 96%;
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 45 100% 48%;
+    --accent-foreground: 0 0% 7%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 18%;
+    --input: 0 0% 20%;
+    --ring: 45 100% 48%;
+    --surface: 0 0% 9%; /* slightly lifted from background for section rhythm */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  /* Keep anchored sections clear of the fixed navbar */
+  section[id],
+  div[id] {
+    scroll-margin-top: 5.5rem;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  /* Accessible focus ring */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-accent;
+  }
+  ::selection {
+    @apply bg-accent text-accent-foreground;
+  }
+  /* Chrome/Safari autofill follows the active theme instead of the browser
+     default pale background — prevents white flashes in dark mode. */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  textarea:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px hsl(var(--background)) inset;
+    -webkit-text-fill-color: hsl(var(--foreground));
+    caret-color: hsl(var(--foreground));
+    transition: background-color 9999s ease-in-out 0s;
+  }
+  /* Native select dropdown options follow the theme (Chrome desktop). */
+  select option {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  /* Prevent layout shift on Framer Motion while reduced motion is off */
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  /* Gold gradient text used sparingly for premium accents */
+  .text-gradient-gold {
+    background: linear-gradient(
+      100deg,
+      #f5b400 0%,
+      #ffd75e 50%,
+      #f5b400 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* Subtle noise/grain texture overlay for cinematic feel */
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+  }
+  /* Premium glass morphism base */
+  .glass {
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+  .glass-light {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+  /* Animated gradient background */
+  .bg-animated-gradient {
+    background: linear-gradient(-45deg, #0a0a0a, #1a1a2e, #16213e, #0f3460);
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+  /* Premium border glow */
+  .border-glow {
+    box-shadow: 0 0 0 1px rgba(245, 180, 0, 0.15), 0 0 20px -5px rgba(245, 180, 0, 0.1);
+  }
+  /* Reveal mask for text/images */
+  .reveal-mask {
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .skip-link {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    z-index: 100;
+    transform: translateY(-200%);
+    border-radius: 0.5rem;
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+    transition: transform 180ms ease;
+  }
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+  /* Architectural grid used on proof and process bands. */
+  .blueprint-grid {
+    background-image: linear-gradient(rgba(245, 180, 0, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(245, 180, 0, 0.1) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
+  }
+
+  /* Light-mode-friendly grid: neutral 48px hairline + sparse 240px gold major-axis. */
+  .blueprint-grid-soft {
+    background-image:
+      linear-gradient(rgba(17,17,17,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17,17,17,0.05) 1px, transparent 1px),
+      linear-gradient(rgba(245,180,0,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,180,0,0.07) 1px, transparent 1px);
+    background-size: 48px 48px, 48px 48px, 240px 240px, 240px 240px;
+  }
+  .dark .blueprint-grid-soft {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(rgba(245,180,0,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,180,0,0.06) 1px, transparent 1px);
+    background-size: 48px 48px, 48px 48px, 240px 240px, 240px 240px;
+  }
+
+  /* Diagonal gold hazard striping — site tape accent. */
+  .construction-stripes {
+    background-image: repeating-linear-gradient(-45deg, rgba(245,180,0,0.35) 0 6px, transparent 6px 12px);
+  }
+
+  /* CAD-style dimension line with perpendicular end ticks. */
+  .dimension-line {
+    position: relative;
+    display: inline-block;
+    height: 1px;
+    background: currentColor;
+    vertical-align: middle;
+  }
+  .dimension-line::before, .dimension-line::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    width: 1px;
+    height: 7px;
+    background: currentColor;
+  }
+  .dimension-line::before { left: 0; }
+  .dimension-line::after { right: 0; }
+
+  /* Engineering tabular numerals. */
+  .tnum { font-variant-numeric: tabular-nums; }
+
+  /* Consolidated mono annotation label. */
+  .label-engineering {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    line-height: 1;
+  }
+  /* Thin premium scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent;
+  }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes ken-burns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+@keyframes fade-up-stagger {
+  0% { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero entrance — mirrors the former framer `child` variant but runs at
+   parse time (CSS), so the hero is complete before hydration regardless of
+   JS/network timing. `both` + per-child delay reproduces the stagger. */
+@keyframes hero-child {
+  0% { opacity: 0; transform: translateY(44px); filter: blur(8px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@keyframes hero-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
